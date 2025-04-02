@@ -4,85 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Age Calculator</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(to top right, #000066 0%, #660033 100%);
-        height: 100vh;
-    }
-
-    h1 {
-        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        font-size: 45px;
-        color: whitesmoke;
-    }
-
-    .titles {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        text-align: center;
-        font-size: 20px;
-        color: beige;
-        font-weight: 700;
-    }
-
-    input {
-        text-align: center;
-    }
-
-    button {
-        height: 40px;
-        width: 150px;
-        border-radius: 25px;
-        margin-top: 40px;
-        background-color: rgb(34, 45, 107);
-        color: azure;
-        outline: none;
-        box-shadow: 0 3px gray;
-        font-size: 20px;
-        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-        cursor: pointer;
-    }
-
-    button:hover {
-        background-color: azure;
-        border: 2px solid rgb(34, 45, 107);
-        color: rgb(34, 45, 107)
-    }
-
-    button:active {
-        transform: translateY(2px);
-    }
-
-    .inputs {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .date {
-        height: 35px;
-        width: 200px;
-        border-radius: 10px;
-        margin-bottom: 5px;
-        outline: none;
-        border: 2px solid #003399;
-    }
-
-    .result {
-        font-size: 25px;
-        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        font-weight: 700;
-        color: greenyellow;
-    }
-</style>
 
 <body>
     <h1>Age Calculator</h1>
@@ -99,37 +22,5 @@
     </form>
 </body>
 
-<script>
-    document.querySelector("button").addEventListener("click", function (event) {
-            event.preventDefault(); // Prevent form submission
-
-            let birthDate = new Date(document.querySelectorAll(".date")[0].value);
-            let todayDate = new Date(document.querySelectorAll(".date")[1].value);
-            let resultElement = document.querySelector(".result");
-
-            if (birthDate > todayDate) {
-                resultElement.textContent = "Birth date cannot be in the future.";
-                resultElement.style.color = "red";
-                return;
-            }
-
-            let ageYears = todayDate.getFullYear() - birthDate.getFullYear();
-            let ageMonths = todayDate.getMonth() - birthDate.getMonth();
-            let ageDays = todayDate.getDate() - birthDate.getDate();
-
-            if (ageDays < 0) {
-                ageMonths--;
-                let lastMonth = new Date(todayDate.getFullYear(), todayDate.getMonth(), 0);
-                ageDays += lastMonth.getDate();
-            }
-
-            if (ageMonths < 0) {
-                ageYears--;
-                ageMonths += 12;
-            }
-
-            resultElement.textContent = `You are ${ageYears} years, ${ageMonths} months, and ${ageDays} days old.`;
-        });
-
-</script>
+<script src="app.js"></script>
 </html>
